@@ -40,7 +40,8 @@ events.preventDefault()
 const subscription={title:form.userTitle, amount:form.userAmout, date: new Date(form.userDate)}
 console.log("form submit",subscription)
 // to send data form child to parents
-props.onSave(subscription)
+props.onSave(subscription);
+// props.onCancle();
 }
 
   return (
@@ -60,7 +61,8 @@ props.onSave(subscription)
         </div>
     </div>
     <div className="new_subscripton_action">
-        <button type="submit">Add subscription</button>
+    <button type="button" className="danger" onClick={props.onCancle}>Cancel</button>
+    <button type="submit">Save</button>
     </div>
    </form>
   )

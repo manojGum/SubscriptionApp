@@ -23,3 +23,7 @@
 .new_subscription_actions{
     text-align: right;
 }
+
+.danger{
+    background-color: #a72d2d !important;
+}
