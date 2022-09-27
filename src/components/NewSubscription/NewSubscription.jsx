@@ -26,7 +26,7 @@ const hideFormHandler=()=>{
   return (
     <div className="new_subscription">
    {showForm && <FormSubscription onSave={onSaveHandler} onCancle={hideFormHandler}/>}
-   <button type="button" onClick={showFormHandler}>Add New</button>
+   <button type="button" onClick={showFormHandler}>Add New </button>
    
     </div>
     

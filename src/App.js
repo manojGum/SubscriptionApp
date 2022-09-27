@@ -6,9 +6,10 @@ import Container from './components/Template/Container';
 // import Subscription from './components/Subscription'
 import NewSubscription from './components/NewSubscription/NewSubscription';
 import Filter from './components/Filter';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import SubscriptionList from './components/subscription/SubscriptionList';
-import SubscriptionChart from './components/subscription/SubscriptionChart';
+// some time
+// import SubscriptionChart from './components/subscription/SubscriptionChart';
 
 const INITIAL_SUBSCRIPTION=[
   {
@@ -48,6 +49,17 @@ function App() {
   
   const [filteredYear, setFilteredYear]=useState("2022");
 
+
+useEffect(()=>{
+  if(localStorage.getItem('filteredYear')){
+
+    setFilteredYear(localStorage.getItem('filteredYear'))
+    console.log(localStorage.getItem('filteredYear'))
+  }
+},[])
+
+
+
   const addsubscriptionHandler=(data)=>{
     // // subscription.push(data)
     // setSubscription([data,...subscription])
@@ -63,6 +75,7 @@ function App() {
 
   const filterChangeHandler=(data)=>{
     setFilteredYear(data)
+    localStorage.setItem('filteredYear',data)
     // console.log("filter change handler",data)
     
   }
@@ -81,7 +94,7 @@ const filterSubscriptions=subscriptions.filter((item)=>{
          <NewSubscription  onAddsubscription={addsubscriptionHandler} />
          <Filter onFilterChange={filterChangeHandler} selectedFilter={filteredYear}  />
          {/* some times */}
- <SubscriptionChart filterSubscriptions={filterSubscriptions}/>
+ {/* <SubscriptionChart filterSubscriptions={filterSubscriptions}/> */}
 
          {/* <SubscriptionChart filteredSubscription={filterSubscription} /> */}
           {/* <Subscription date={subscriptions[0].date} title={subscriptions[0].title} amount={subscriptions[0].amount}/>
