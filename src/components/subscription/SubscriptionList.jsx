@@ -4,6 +4,8 @@ import "./SubscriptionList.css";
 
 const SubscriptionList = (props) => {
 
+    
+
 if(props.subscriptions.length ===0) { return <h1 className='list_no_data'>No data found</h1> }
  return (
     <ul className='list' >
