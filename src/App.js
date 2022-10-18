@@ -48,8 +48,8 @@ function App() {
   const [subscriptions , setSubscription]=useState(INITIAL_SUBSCRIPTION)
   
   const [filteredYear, setFilteredYear]=useState("2022");
-  const [isLoading , SetIsLoading]=useState(false);
-  const [error, SetError]=useState('')
+ 
+
 
 
 useEffect(()=>{
@@ -98,43 +98,43 @@ const filterSubscriptions=subscriptions.filter((item)=>{
 // }
 
 
-const fetchListHandler= useState(()=>{
-  SetIsLoading(true);
-  // try{
-  //   const response = await fetch('https://react-workspace-aff8f-default-rtdb.firebaseio.com/')
-  //   // const data = await response.json
-  //   // const transformedData= data.toString()
-  //   if(!response.ok){
-  //     throw new Error("something went wrong")
-  //   }
+// const fetchListHandler= useState(()=>{
+//   SetIsLoading(true);
+//   // try{
+//   //   const response = await fetch('https://react-workspace-aff8f-default-rtdb.firebaseio.com/')
+//   //   // const data = await response.json
+//   //   // const transformedData= data.toString()
+//   //   if(!response.ok){
+//   //     throw new Error("something went wrong")
+//   //   }
 
-  // }catch(error){
-  //   SetError(error.message)
+//   // }catch(error){
+//   //   SetError(error.message)
 
-  // }
+//   // }
 
 
- fetch('https://react-workspace-aff8f-default-rtdb.firebaseio.com/subscriptions.json').then((response)=>{
-  console.log(response)
-  return response.json()
-  }).then((data)=>{
-    SetIsLoading(false)
-console.log(data)
-  }).catch(err=>{
-   SetError((err)=>{
-    SetError(err.message)
-   })
-  });
-},[])
+//  fetch('https://react-workspace-aff8f-default-rtdb.firebaseio.com/subscriptions.json').then((response)=>{
+//   console.log(response)
+//   return response.json()
+//   }).then((data)=>{
+//     SetIsLoading(false)
+// console.log(data)
+//   }).catch(err=>{
+//    SetError((err)=>{
+//     SetError(err.message)
+//    })
+//   });
+// },[])
 
-// useEffect(()=>{
-//   fetchListHandler();
-// },[ fetchListHandler ])
+// // useEffect(()=>{
+// //   fetchListHandler();
+// // },[ fetchListHandler ])
 
   return (
    
       <Container>
-        <button type='button' onClick={fetchListHandler}>Fetch List</button>
+        
          <NewSubscription  onAddsubscription={addsubscriptionHandler} />
          <Filter onFilterChange={filterChangeHandler} selectedFilter={filteredYear}  />
          {/* some times */}
@@ -172,12 +172,9 @@ console.log(data)
        {/* third approch  6 */}
        
 {/* some time */}
-      {!isLoading && filterSubscriptions.length>0 && <SubscriptionList subscriptions={filterSubscriptions}/>}
+     <SubscriptionList subscriptions={filterSubscriptions}/>
       
-      {!isLoading && filterSubscriptions.length===0 && <p>No data found </p>}
-      
-      {isLoading && <p>please wait while we load your data ...</p> }
-      {!isLoading && error &&  <p>some thing wrong</p> }
+  
 
         {/* {subscriptions.map(subscription=><Subscription date={subscription.date} title={subscription.title} amount={subscription.amount} key={subscription.id}/>)} */}
         {/* {filterSubscription.map(subscription=><Subscription date={subscription.date} title={subscription.title} amount={subscription.amount} key={subscription.id}/>)} */}
